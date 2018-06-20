@@ -50,7 +50,8 @@ namespace Interfaz_Contadora
 
         private void PanelBarra_Paint(object sender, PaintEventArgs e)
         {
-            Console.WriteLine("Contadora de Varillas");
+            //Pero que pasa
+                
         }
     }
 }
