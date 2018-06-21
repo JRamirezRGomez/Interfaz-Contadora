@@ -12,9 +12,15 @@ namespace Interfaz_Contadora
 {
     public partial class Form1 : Form
     {
+
+        int PanelWidth;
+        bool Hidden;
         public Form1()
+
         {
             InitializeComponent();
+            PanelWidth = PanelSlide.Width;
+            Hidden = false;
          
         }
         
@@ -52,6 +58,53 @@ namespace Interfaz_Contadora
         {
             //Pero que pasa
                 
+        }
+        
+        private void Slider_Tick(object sender, EventArgs e)
+        {
+            if (Hidden)
+            {
+                PanelSlide.Width = PanelSlide.Width + 30;
+                if (PanelSlide.Width >= PanelWidth)
+                {
+                    Slider.Stop();
+                    Hidden = false;
+                    this.Refresh();
+
+                }
+            }
+            else
+            {
+                PanelSlide.Width = PanelSlide.Width - 30;
+                if (PanelSlide.Width <= 0)
+                {
+                    Slider.Stop();
+                    Hidden = true;
+                    this.Refresh();
+                }
+            }
+
+        }
+        
+        private void BtnSlide_Click(object sender, EventArgs e)
+        {
+            Slider.Start();
+        }
+
+        private void BtnMaximizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            //this.WindowState = FormWindowState.Normal;
+        }
+
+        private void BtnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void PanelSlide_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
